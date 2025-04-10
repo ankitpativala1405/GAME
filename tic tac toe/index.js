@@ -75,3 +75,26 @@ cells.forEach(cell => {
 });
 
 resetBtn.addEventListener('click', resetGame);
+
+
+
+document.querySelector("#myform").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let players=JSON.parse(localStorage.getItem("players")) || []
+
+    let player1 =document.getElementById("player1").value;
+    let player2 =document.getElementById("player2").value;
+
+    let player={player1:player1,
+        player2:player2
+    }
+
+    players.push(player)
+
+    localStorage.setItem("players", JSON.stringify(players));
+
+    document.querySelector(".game-container").style.display = "block";
+    document.querySelector("#myform").style.display = "none"; 
+
+})
